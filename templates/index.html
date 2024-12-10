@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Temperaments Personality Test</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Discover Your Temperament</h1>
+        <p>Answer the questions below to find out your dominant temperament. Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
+        <form method="post">
+            <!-- Sanguine Questions -->
+            <h2>Sanguine (Optimistic, Sociable)</h2>
+            <label>1. I enjoy being the center of attention. <input type="number" name="sanguine1" min="1" max="5" required></label>
+            <label>2. I easily make friends and love meeting new people. <input type="number" name="sanguine2" min="1" max="5" required></label>
+            <label>3. I prefer active environments over quiet ones. <input type="number" name="sanguine3" min="1" max="5" required></label>
+            <label>4. I find it easy to express my emotions openly. <input type="number" name="sanguine4" min="1" max="5" required></label>
+            <label>5. I feel comfortable initiating conversations with strangers. <input type="number" name="sanguine5" min="1" max="5" required></label>
+
+            <!-- Choleric Questions -->
+            <h2>Choleric (Ambitious, Assertive)</h2>
+            <label>6. I am highly goal-oriented and determined to succeed. <input type="number" name="choleric1" min="1" max="5" required></label>
+            <label>7. I often take the lead in group settings. <input type="number" name="choleric2" min="1" max="5" required></label>
+            <label>8. I enjoy debating or discussing strong opinions. <input type="number" name="choleric3" min="1" max="5" required></label>
+            <label>9. I am not easily discouraged when pursuing my goals. <input type="number" name="choleric4" min="1" max="5" required></label>
+            <label>10. I am confident in making decisions under pressure. <input type="number" name="choleric5" min="1" max="5" required></label>
+
+            <!-- Melancholic Questions -->
+            <h2>Melancholic (Analytical, Reflective)</h2>
+            <label>11. I enjoy planning and organizing tasks in detail. <input type="number" name="melancholic1" min="1" max="5" required></label>
+            <label>12. I think deeply about life and its meaning. <input type="number" name="melancholic2" min="1" max="5" required></label>
+            <label>13. I prefer well-structured plans over spontaneous actions. <input type="number" name="melancholic3" min="1" max="5" required></label>
+            <label>14. I am sensitive to criticism and take it seriously. <input type="number" name="melancholic4" min="1" max="5" required></label>
+            <label>15. I often analyze situations before taking action. <input type="number" name="melancholic5" min="1" max="5" required></label>
+
+            <!-- Phlegmatic Questions -->
+            <h2>Phlegmatic (Calm, Patient)</h2>
+            <label>16. I am naturally calm and patient in stressful situations. <input type="number" name="phlegmatic1" min="1" max="5" required></label>
+            <label>17. I prefer harmony over conflict in my relationships. <input type="number" name="phlegmatic2" min="1" max="5" required></label>
+            <label>18. I enjoy helping others resolve conflicts peacefully. <input type="number" name="phlegmatic3" min="1" max="5" required></label>
+            <label>19. I find stability and routine comforting. <input type="number" name="phlegmatic4" min="1" max="5" required></label>
+            <label>20. I tend to avoid unnecessary risks or adventures. <input type="number" name="phlegmatic5" min="1" max="5" required></label>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

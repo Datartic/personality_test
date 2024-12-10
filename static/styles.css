@@ -1,0 +1,110 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+.centered-text {
+
+    text-align: center; 
+  
+  }
+  
+
+h1, h2 {
+    text-align: center;
+    color: #4CAF50;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #444;
+    text-align: left;
+}
+
+form label {
+    margin: 10px 0;
+    font-size: 16px;
+    display: block;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+button {
+    margin-top: 20px;
+    background: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #45a049;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+canvas {
+    margin: 20px auto;
+    display: block;
+    max-width: 300px; /* Reduced size from 400px to 300px */
+}
+
+#image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+#zoom-image {
+    transition: transform 0.2s ease-in-out;
+    cursor: grab;
+}

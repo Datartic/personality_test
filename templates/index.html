@@ -10,6 +10,8 @@
 <body>
     <div class="container">
         <h1>Discover Your Temperament</h1>
+        <!-- Display the total user count -->
+        <p class="user-count">✨ People who have used this application so far: <strong>{{ total_users }}</strong> ✨</p>
         <p>Answer the questions below to find out your dominant temperament. Rate each statement from 1 (Strongly Disagree) to 5 (Strongly Agree).</p>
         <form method="post">
             <!-- Sanguine Questions -->
@@ -44,9 +46,23 @@
             <label>19. I find stability and routine comforting. <input type="number" name="phlegmatic4" min="1" max="5" required></label>
             <label>20. I tend to avoid unnecessary risks or adventures. <input type="number" name="phlegmatic5" min="1" max="5" required></label>
             <label>Email: <input type="email" name="email" required></label>
-            <label>Ethnicity: <input type="text" name="ethnicity" required></label>
+            <!-- <label>Ethnicity: <input type="text" name="ethnicity" required></label> -->
+            <label for="ethnicity">Select Your Ethnicity:</label>
+            <select id="ethnicity" name="ethnicity" required>
+                <option value="" disabled selected>Select your ethnicity</option>
+                <option value="African">African</option>
+                <option value="African American">African American</option>
+                <option value="Asian">Asian</option>
+                <option value="White">Caucasian</option>
+                <option value="Hispanic">Hispanic</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="Other">Other</option>
+            </select>
             <button type="submit">Submit</button>
         </form>
+        <footer>
+            Made with ❤️
+        </footer>
     </div>
 </body>
 </html>

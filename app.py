@@ -24,11 +24,6 @@ def get_connection():
         password=DB_PASS,
         db=DB_NAME
     )
-    pool = sqlalchemy.create_engine(
-    "mysql+pymysql://",
-    creator=get_connection,
-)
-    print("This is pool",pool)
     return conn
 
 def test_connection():
@@ -46,6 +41,16 @@ def test_connection():
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    total_users = 0  # Initialize the total user count
+
+    # Get the total number of users from the database
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM users")
+    total_users = cursor.fetchone()[0]
+    cursor.close()
+    conn.close()
+
     if request.method == "POST":
         answers = request.form
         scores = {"Sanguine": 0, "Choleric": 0, "Melancholic": 0, "Phlegmatic": 0}
@@ -60,30 +65,40 @@ def index():
                 scores["Melancholic"] += int(value)
             elif key.startswith("phlegmatic"):
                 scores["Phlegmatic"] += int(value)
-
-        # Determine the dominant temperament
+        
+        # Determine dominant temperament
         dominant_type = max(scores, key=scores.get)
 
         # Get user email and ethnicity from the form
-        email = request.form.get("email")
-        ethnicity = request.form.get("ethnicity")
+        email = request.form.get('email')
+        ethnicity = request.form.get('ethnicity')
 
-        # Insert user data into the database
-        try:
-            conn = get_connection()
-            with conn.cursor() as cursor:
-                query = """
-                    INSERT INTO users (email, ethnicity, dominant_type)
-                    VALUES (%s, %s, %s)
-                """
-                cursor.execute(query, (email, ethnicity, dominant_type))
-                conn.commit()
-        finally:
-            conn.close()
+        conn = get_connection()
+        cursor = conn.cursor()
 
-        return render_template("result.html", scores=scores, dominant_type=dominant_type)
+        # Check if the user already exists
+        query = "SELECT usage_count FROM users WHERE email = %s"
+        cursor.execute(query, (email,))
+        result = cursor.fetchone()
 
-    return render_template("index.html")
+        if result:
+            # User exists: increment usage count
+            usage_count = result[0] + 1
+            update_query = "UPDATE users SET usage_count = %s, ethnicity = %s, dominant_type = %s WHERE email = %s"
+            cursor.execute(update_query, (usage_count, ethnicity, dominant_type, email))
+        else:
+            # New user: insert into the database
+            insert_query = "INSERT INTO users (email, ethnicity, dominant_type, usage_count) VALUES (%s, %s, %s, 1)"
+            cursor.execute(insert_query, (email, ethnicity, dominant_type))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return render_template("result.html", scores=scores, dominant_type=dominant_type, total_users=total_users)
+
+    # Pass the total number of users to the template
+    return render_template("index.html", total_users=total_users)
 
 if __name__ == "__main__":
     # Test the database connection before starting the app

@@ -11,7 +11,7 @@ Welcome to the Personality Test Web App! 🚀 This is a fun, interactive, and in
 Clone the Repository
 Start by cloning this repository to your local machine:
 
-git clone https://github.com/Datartic/personality_test.git
+git clone https://github.com/Datartic/personality_test.git \n
 cd personality_test
 
 ### 💻 Run Locally
